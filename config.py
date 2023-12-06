@@ -1,0 +1,28 @@
+import pygame
+
+# Screen dimensions
+WIDTH, HEIGHT = 800, 600
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+
+# Grid dimensions
+N_CELLS_X = 80
+N_CELLS_Y = 60
+
+CELL_WIDTH = WIDTH // N_CELLS_X
+CELL_HEIGHT = HEIGHT // N_CELLS_Y
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GRAY = (128, 128, 128)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+YELLOW = (255, 255, 0)
+
+# UI size
+BUTTON_WIDTH = 100
+BUTTON_HEIGHT = 30
+
+CELL_COLOR = GRAY
+GRID_COLOR = BLACK
+BACKGROUND_FILL_COLOR = WHITE
