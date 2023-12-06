@@ -4,13 +4,22 @@ from filemanager import GameFileManager
 
 
 class Game:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
     def __init__(self, n_cells_x, n_cells_y):
-        self._n_cells_x = n_cells_x
-        self._n_cells_y = n_cells_y
-        self.state = GameState(np.random.choice([0, 1], size=(n_cells_x, n_cells_y), p=[0.8, 0.2]))
-        self.paused = False
-        self.running = True
-        self.file_manager = GameFileManager("save.txt")
+        if not hasattr(self, 'initialized'):
+            self._n_cells_x = n_cells_x
+            self._n_cells_y = n_cells_y
+            self.state = GameState(np.random.choice([0, 1], size=(n_cells_x, n_cells_y), p=[0.8, 0.2]))
+            self.paused = False
+            self.running = True
+            self.file_manager = GameFileManager("save.txt")
+            self.initialized = True
 
     def toggle_pause(self):
         self.paused = not self.paused
